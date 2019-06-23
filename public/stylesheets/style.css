@@ -1,0 +1,38 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+#chat-history {
+  width: 500px;
+  padding: 5px 15px 5px 15px;
+  background: #efefef;
+  border-radius: 5px;
+  overflow-y: scroll;
+  border: 1px solid #CCC;
+  margin-top: 5px;
+  height: 160px;
+}
+.chat-input {
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  margin-top: 10px; 
+  padding: 5px; 
+  width: 400px;
+}
+#chat-history .name {
+  margin-right: 5px;
+}
+#user-name {
+  margin-right: 5px;
+}
