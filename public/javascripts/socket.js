@@ -1,14 +1,11 @@
 $(() => {
   const socket = io.connect('http://localhost:3000');
 
-  console.log('lol');
-  
   socket.emit('init-user');
   socket.on('init-user', (data) => {
-    console.log(data);
-    $('#user-name').text(`#${data.user}:`);    
+    $('#user-name').text(`#${data.user}:`).css('color', `#${data.color}`);
     data.history.forEach(el => {
-      $('#chat-history').append(`<div><span class="name">#${el.user}:</span><span>${el.text}</span></div>`);
+      $('#chat-history').append(`<div><span class="name" style="color: #${el.color}">#${el.user}:</span><span>${el.text}</span></div>`);
     });
   });
 
@@ -25,6 +22,6 @@ $(() => {
    });
 
    socket.on('chat-message', (data) => {
-    $('#chat-history').append(`<div><span class="name">#${data.user}:</span><span>${data.text}</span></div>`);
+    $('#chat-history').append(`<div><span class="name" style="color: #${data.color}">#${data.user}:</span><span>${data.text}</span></div>`);
    });
 });
