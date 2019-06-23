@@ -1,6 +1,8 @@
 $(() => {
   const socket = io.connect('http://localhost:3000');
 
+  $('#chat-input-msg').focus();
+
   socket.emit('init-user');
   socket.on('init-user', (data) => {
     $('#user-name').text(`#${data.user}:`).css('color', `#${data.color}`);
@@ -23,5 +25,8 @@ $(() => {
 
    socket.on('chat-message', (data) => {
     $('#chat-history').append(`<div><span class="name" style="color: #${data.color}">#${data.user}:</span><span>${data.text}</span></div>`);
+    
+    const element = document.getElementById('chat-history');
+    element.scrollTop = element.scrollHeight;
    });
 });

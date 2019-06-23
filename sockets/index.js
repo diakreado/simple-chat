@@ -1,10 +1,10 @@
 
-const history = [];
+let history = [];
 
 const indexWebSocket = (io) => {
   io.on('connection', function (socket) {
     const user = Math.floor(Math.random() * 900000000 + 1000000).toString(36);
-    const color = Math.floor(Math.random() * 9000000 + 10000).toString(16);
+    const color = Math.floor(Math.random() * 16777215).toString(16);
 
     console.log(`User #${user} connected.`);
     
@@ -16,6 +16,7 @@ const indexWebSocket = (io) => {
     socket.on('chat-message', (text) => {
       console.log(`chat-message-> #${user}: ${text}`);
       history.push({user, color, text});
+      history = history.slice(-50);
       io.emit('chat-message', {user, color, text});
     });
 
